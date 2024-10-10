@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   ttl: 5
-  initialScale: 5
+  initialScale: 2
   scaleIncreaseRate: 3
 --- !u!114 &6267577556211739093
 MonoBehaviour:

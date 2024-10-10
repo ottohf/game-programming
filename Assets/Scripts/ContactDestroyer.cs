@@ -19,9 +19,13 @@ public class ContactDestroyer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("Two objects made contact and should have been destroyed");
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            print("Two objects made contact and should have been destroyed");
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+        
     }
 }
 

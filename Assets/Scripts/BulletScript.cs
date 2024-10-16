@@ -27,7 +27,6 @@ public class BulletScript : MonoBehaviour
             // Determine if this is a super bullet
             if (counter % 5 == 0)
             {
-                print("counter: " + counter);
                 scaleIncreaseRate *= 3;
                 speed *= 3;
                 print("super bullet fired");

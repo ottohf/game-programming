@@ -7,10 +7,12 @@ public class WavesGameMode : MonoBehaviour
 {
     [SerializeField] private Life playerLife;
 
-    void Awake()
+    void Start()
     {
-        playerLife.onDeath.AddListener(OnPlayerDied);
-        
+        if (playerLife != null)
+        {
+            playerLife.onDeath.AddListener(OnPlayerDied);
+        } else { Debug.LogError("no playerlife"); }
 
     }
 
@@ -22,10 +24,12 @@ public class WavesGameMode : MonoBehaviour
         {
             SceneManager.LoadScene("WinScreen");
         }
+        if (playerLife != null) { 
 
-        if (playerLife.amount <= 0)
+            if (playerLife.amount <= 0)
         {
             SceneManager.LoadScene("LoseScreen");
+        }
         }
 
     }

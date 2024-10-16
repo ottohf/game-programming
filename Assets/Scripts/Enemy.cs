@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
 
         }
         EnemiesManager.instance.enemies.Add(this);
-        print("added an enemy to manager");
     }
 
     private void OnDestroy()

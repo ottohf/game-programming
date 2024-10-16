@@ -27,9 +27,9 @@ public class WaveSpawner : MonoBehaviour
             Debug.LogError("Fighting area is not assigned!");
             return;
         }
-
+        WavesManager.instance.waves.Add(this);
         InvokeRepeating("Spawn", startTime, spawnRate);
-        Invoke("CancelInvoke", endTime);
+        Invoke("EndSpawner", endTime);
     }
 
     // Spawns a prefab at a random position within the fighting area
@@ -41,6 +41,11 @@ public class WaveSpawner : MonoBehaviour
         Instantiate(prefab, randomPosition, Quaternion.identity);
     }
 
+    void EndSpawner()
+    {
+        WavesManager.instance.waves.Remove(this);
+        CancelInvoke();
+    }
     // Get a random position within the fighting area (using the bounds of the BoxCollider)
     Vector3 GetRandomPositionInArea()
     {

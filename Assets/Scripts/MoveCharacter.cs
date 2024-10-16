@@ -9,19 +9,22 @@ public class MoveCharacter : MonoBehaviour
     private Vector2 movementInput; // Store movement input
     private Vector2 lookInput; // Store look input
 
+    private Rigidbody rb; // For applying forces on player
+
     void Awake()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        Vector3 moveDirection = new Vector3(movementInput.x, 0, movementInput.y);
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.Self);
-
-        float rotationAmount = lookInput.x * rotationSpeed * Time.deltaTime;
-        transform.Rotate(0, rotationAmount, 0);
+        rb.AddRelativeForce(
+            movementInput.x * Time.deltaTime*speed*1000,
+            0,
+            movementInput.y * Time.deltaTime * speed*1000);
+        rb.AddRelativeTorque(0, lookInput.x * rotationSpeed * Time.deltaTime, 0);
     }
 
     // Input methods for the new Input System using CallbackContext

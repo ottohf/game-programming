@@ -32,7 +32,17 @@ public class EnemyMovement : MonoBehaviour
            0,
            z * Time.deltaTime * speed * 1000
         );
-       
+
+        // Calculate direction based on x and z values
+        Vector3 moveDirection = new Vector3(x, 0, z).normalized;
+
+        // Only rotate if the enemy is actually moving
+        if (moveDirection != Vector3.zero)
+        {
+            // Calculate the rotation to look in the movement direction
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
+        }
     }
 }
 

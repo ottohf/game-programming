@@ -1,35 +1,39 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // For the new Input System
+using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public GameObject prefab; // Assign your prefab in the inspector
-    public Transform shootPoint; // Assign your shoot point in the inspector
+    public GameObject prefab; 
+    public Transform shootPoint;
     public int counter;
+    public float fireRate = 0.5f; 
 
-    private PlayerControls controls; // Reference to your PlayerControls class
+    private PlayerControls controls;
+    private float nextFireTime = 0f;
 
     private void Awake()
     {
-        controls = new PlayerControls(); // Initialize your PlayerControls
+        controls = new PlayerControls();
     }
 
     private void OnEnable()
     {
-        controls.Enable(); // Enable the input controls
+        controls.Enable();
     }
 
     private void OnDisable()
     {
-        controls.Disable(); // Disable the input controls to avoid conflicts
+        controls.Disable();
     }
 
     void Update()
     {
-        // Check if the left mouse button is pressed
-        if (controls.Player.Fire.triggered) // Assuming fire action is defined
+        // Check if Fire action is triggered and if enough time has passed since the last shot
+        if (controls.Player.Fire.triggered && Time.time >= nextFireTime)
         {
+            nextFireTime = Time.time + fireRate; // Set the next allowed fire time
             counter++;
+
             // Instantiate the prefab at the shoot point
             GameObject clone = Instantiate(prefab, shootPoint.position, shootPoint.rotation);
             BulletScript bulletScript = clone.GetComponent<BulletScript>();

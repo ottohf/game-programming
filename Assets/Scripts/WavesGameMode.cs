@@ -6,13 +6,15 @@ using UnityEngine;
 public class WavesGameMode : MonoBehaviour
 {
     [SerializeField] private Life playerLife;
+    [SerializeField] private Life playerBaseLife;
 
-    void Start()
+    void Awake()
     {
         if (playerLife != null)
         {
-            playerLife.onDeath.AddListener(OnPlayerDied);
+            playerLife.onDeath.AddListener(OnPlayerOrBaseDied);
         } else { Debug.LogError("no playerlife"); }
+        playerBaseLife.onDeath.AddListener(OnPlayerOrBaseDied);
 
     }
 
@@ -33,7 +35,7 @@ public class WavesGameMode : MonoBehaviour
         }
 
     }
-    void OnPlayerDied() {
+    void OnPlayerOrBaseDied() {
         SceneManager.LoadScene("LoseScreen");
     }
 }

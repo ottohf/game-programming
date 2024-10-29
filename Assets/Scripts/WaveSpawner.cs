@@ -52,7 +52,7 @@ public class WaveSpawner : MonoBehaviour
         Bounds bounds = areaCollider.bounds;
 
         float randomX = Random.Range(bounds.min.x, bounds.max.x);
-        float randomY = bounds.min.y+1.75f;
+        float randomY = bounds.max.y;
         float randomZ = Random.Range(bounds.min.z, bounds.max.z);
 
         return new Vector3(randomX, randomY, randomZ);

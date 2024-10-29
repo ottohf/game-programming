@@ -8,7 +8,6 @@ public class Life : MonoBehaviour
 
     private void Awake()
     {
-        amount = 2f;
     }
     void Update()
     {

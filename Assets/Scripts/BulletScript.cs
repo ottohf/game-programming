@@ -49,23 +49,26 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Decrease ttl (time to live)
-        ttl -= Time.deltaTime;
-
-        // If ttl is greater than 0, continue moving and growing the bullet
-        if (ttl > 0)
+        if (Time.timeScale != 0)
         {
-            // Slowly increase bullet size
-            currentScale += scaleIncreaseRate * Time.deltaTime;
-            transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+            // Decrease ttl (time to live)
+            ttl -= Time.deltaTime;
 
-            // Move bullet forward
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-        else
-        {
-            // Destroy the bullet after ttl reaches 0
-            Destroy(gameObject);
+            // If ttl is greater than 0, continue moving and growing the bullet
+            if (ttl > 0)
+            {
+                // Slowly increase bullet size
+                currentScale += scaleIncreaseRate * Time.deltaTime;
+                transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+
+                // Move bullet forward
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            }
+            else
+            {
+                // Destroy the bullet after ttl reaches 0
+                Destroy(gameObject);
+            }
         }
     }
 }

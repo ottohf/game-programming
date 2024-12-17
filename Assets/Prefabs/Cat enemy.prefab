@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45686c48bb03844febe6a4c9fbb0d9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsGivenOnDeath: 2
+  pointsGivenOnDeath: 1
 --- !u!114 &709310585491533536
 MonoBehaviour:
   m_ObjectHideFlags: 0

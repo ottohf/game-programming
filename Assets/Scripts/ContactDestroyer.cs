@@ -11,7 +11,7 @@ public class ContactDestroyer : MonoBehaviour
             var life = other.gameObject.GetComponent<Life>();
             if (life != null)
             {
-                life.amount -= 1;
+                life.currentAmount -= 1;
             }
             else
             {

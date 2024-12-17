@@ -224,7 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68c2e7c4adee40bb928f798229d8b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 3
+  maxAmount: 2
+  currentAmount: 0
   onDeath:
     m_PersistentCalls:
       m_Calls: []

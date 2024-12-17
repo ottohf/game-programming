@@ -26,10 +26,9 @@ public class FireMoving : MonoBehaviour
             
             if (other.gameObject.TryGetComponent<Life>(out var life))
             {
-                life.amount -= 1;
+                life.currentAmount -= 1;
             }
-            else { print("fire hit something with no life");
-            } 
+           
         }
     }
     private IEnumerator TurnAround()
